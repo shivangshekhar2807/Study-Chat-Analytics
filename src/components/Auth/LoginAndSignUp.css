@@ -1,0 +1,99 @@
+
+.study-animation-container {
+    background: linear-gradient(to bottom right, #1a1a1a, #2c2c2c);
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-books {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.book {
+    width: 80px;
+    height: 50px;
+    background-color: #c19a6b;
+    border-radius: 5px;
+    position: absolute;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0.5;
+}
+
+.book1 {
+    top: 20%;
+    left: 30%;
+    animation-delay: 0s;
+}
+
+.book2 {
+    top: 40%;
+    left: 60%;
+    animation-delay: 2s;
+}
+
+.book3 {
+    top: 70%;
+    left: 45%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+
+.form-panel {
+    background: linear-gradient(to bottom right, #1a1a1a, #2c2c2c);
+    color: #fff;
+}
+
+
+.form-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 0 20px rgba(193, 154, 107, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.custom-input {
+    background-color: #2c2c2c;
+    border: 1px solid #c19a6b;
+    color: #fff;
+}
+
+.custom-input::placeholder {
+    color: #aaa;
+}
+
+
+.form-panel hr {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+
+.form-panel .btn-outline-light {
+    border-color: #c19a6b;
+    color: #c19a6b;
+}
+
+.form-panel .btn-outline-light:hover {
+    background-color: #c19a6b;
+    color: #1a1a1a;
+    font-weight: bold;
+}
