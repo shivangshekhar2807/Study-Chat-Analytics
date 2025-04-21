@@ -3,12 +3,15 @@
 
 
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { StudyAction } from '../Store/StudySlice';
 
 function ShowEduHubContent({ addContent }) {
   const [eduPosts, setEduPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchEduContent() {
@@ -38,6 +41,7 @@ function ShowEduHubContent({ addContent }) {
         setEduPosts(loadedPosts.reverse());
         setFilteredPosts(loadedPosts.reverse());
         setIsLoading(false);
+          dispatch(StudyAction.eduhubcontenthandler({ val: loadedPosts.length }));
       } catch (error) {
         alert(error.message);
         setIsLoading(false);
@@ -70,6 +74,8 @@ function ShowEduHubContent({ addContent }) {
 
     setFilteredPosts(matched);
   };
+
+  
 
   return (
     <div className="mt-5">

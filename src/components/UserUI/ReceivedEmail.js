@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { StudyAction } from '../Store/StudySlice';
 
 function ReceivedEmail() {
   const [emails, setEmails] = useState([]);
   const email = useSelector((state) => state.Auth.email);
   const cleanedemail = email.replace(/[@.]/g, '_');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchReceivedEmails = async () => {
@@ -17,6 +19,7 @@ function ReceivedEmail() {
       }
 
       setEmails(loaded.reverse());
+       dispatch(StudyAction.chatrecievedhandler({val: loaded.length}))
     };
 
     fetchReceivedEmails();

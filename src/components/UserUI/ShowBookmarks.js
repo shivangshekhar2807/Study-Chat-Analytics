@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { StudyAction } from '../Store/StudySlice';
 
 function ShowBookmarks({add,setIsEdit,setEditobj}) {
   const email = useSelector((state) => state.Auth.email);
   const cleanedemail = email.replace(/[@.]/g, '_');
 
     const [bookmarks, setBookmarks] = useState([]);
-    const [Delete, setDelete]=useState(null);
+  const [Delete, setDelete] = useState(null);
+  const dispatch = useDispatch();
     
     function EditHandler(bookmark) {
        
@@ -63,6 +65,7 @@ function ShowBookmarks({add,setIsEdit,setEditobj}) {
         }
 
         setBookmarks(loadedBookmarks);
+         dispatch(StudyAction.bookmarkhandler({val: loadedBookmarks.length}))
       } catch (error) {
         console.error('Error fetching bookmarks:', error);
       }

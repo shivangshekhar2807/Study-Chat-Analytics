@@ -7,7 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, Responsive
 
 const dsaTopics = ['Arrays', 'Linked List', 'Stacks', 'Queues', 'Trees', 'Hashing', 'Recursion', 'Sorting', 'Searching'];
 const jsTopics = ['Variables & Scope', 'Hoisting', 'Closures', 'Promises', 'Async/Await', 'Event Loop', 'Callback Functions', 'DOM Manipulation', 'Fetch API'];
-const reactTopics = ['Components & Props', 'Hooks (useState, useEffect, etc.)', 'Context API', 'React Router', 'Redux Toolkit', 'useReducer', 'Forms & Validation', 'Lifecycle Methods','Authentication'];
+const reactTopics = ['Components & Props', 'Hooks (useState, useEffect, etc.)', 'Context API', 'React Router', 'Redux Toolkit',  'Forms & Validation', 'Lifecycle Methods','Authentication'];
 
 
 

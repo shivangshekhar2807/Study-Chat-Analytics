@@ -3,7 +3,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { StudyAction } from '../Store/StudySlice';
 
 function ShowFriendNotes() {
   const [friendNotes, setFriendNotes] = useState([]);
@@ -11,6 +12,7 @@ function ShowFriendNotes() {
 
   const email = useSelector((state) => state.Auth.email);
   const Friendcleanedemail = email.replace(/[@.]/g, '_');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchFriendNotes() {
@@ -34,6 +36,7 @@ function ShowFriendNotes() {
           }
 
           setFriendNotes(loadedNotes);
+          dispatch(StudyAction.friendnoteshandler({val: loadedNotes.length}))
         }
       } catch (err) {
         console.error('Failed to fetch friend notes:', err);
@@ -43,7 +46,7 @@ function ShowFriendNotes() {
     }
 
     fetchFriendNotes();
-  }, [Friendcleanedemail]);
+  }, []);
 
   return (
     <div
@@ -89,7 +92,7 @@ function ShowFriendNotes() {
                       <br />
                       <strong>🕒 Time:</strong> {note.time || 'N/A'}<br></br>
                       <strong>📅 Day:</strong> {note.day || 'N/A'}<br></br>
-                      <strong>📆 Full Date:</strong> {note.date || 'N/A'}<br></br>
+                      <strong>📆 Date:</strong> {note.date || 'N/A'}<br></br>
                       
                     </small>
                   </Card.Footer>

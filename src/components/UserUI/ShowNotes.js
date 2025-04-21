@@ -2,15 +2,17 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { StudyAction } from '../Store/StudySlice';
 
 function ShowNotes({ addmynotes,setIsEdit,setEditNote }) {
   const email = useSelector((state) => state.Auth.email);
   const cleanedemail = email.replace(/[@.]/g, '_');
   const [notes, setNotes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [Delete, setDelete] = useState({});
+  const [Delete, setDelete] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchNotes() {
@@ -32,6 +34,7 @@ function ShowNotes({ addmynotes,setIsEdit,setEditNote }) {
 
         setNotes(loadedNotes);
         setIsLoading(false);
+        dispatch(StudyAction.noteshandler({val: loadedNotes.length}))
       } catch (error) {
         alert(error.message);
         setIsLoading(false);

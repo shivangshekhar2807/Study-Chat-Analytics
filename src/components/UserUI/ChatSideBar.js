@@ -1,6 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function ChatSidebar({ setSelectedView }) {
+  const totalrecieved = useSelector((state) => state.Study.chatrecieved);
+  const totalsent = useSelector((state) => state.Study.chatsent);
+   const badgeStyle = {
+    backgroundColor: '#c19a6b',
+    color: '#4b4b4b',
+    fontWeight: 'bold',
+    borderRadius: '12px',
+    padding: '0.25em 0.6em',
+    fontSize: '0.8rem',
+    marginLeft: '8px',
+  };
   return (
     <div
       className="d-flex flex-column p-4 bg-dark"
@@ -35,7 +47,8 @@ function ChatSidebar({ setSelectedView }) {
                   borderRadius: '10px',
               }}
           >
-              📥 Received
+        📥 Received 
+        <span style={badgeStyle}>{totalrecieved}</span>
           </button>
 
       <button
@@ -49,7 +62,8 @@ function ChatSidebar({ setSelectedView }) {
                   borderRadius: '10px',
               }}
           >
-              📤 Sent
+        📤 Sent
+        <span style={badgeStyle}>{totalsent}</span>
           </button>
     </div>
   );

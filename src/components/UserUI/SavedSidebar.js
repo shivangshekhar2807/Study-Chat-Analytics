@@ -3,8 +3,24 @@
 
 
 import React from 'react';
+import { useSelector } from 'react-redux';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SavedSidebar({ setShowSavedItem }) {
+  const totalnotes = useSelector((state) => state.Study.notes);
+
+  const totalfriendsnotes = useSelector((state) => state.Study.friendnotes);
+  const totalbookmark = useSelector((state) => state.Study.bookmark);
+     const badgeStyle = {
+    backgroundColor: '#c19a6b',
+    color: '#4b4b4b',
+    fontWeight: 'bold',
+    borderRadius: '12px',
+    padding: '0.25em 0.6em',
+    fontSize: '0.8rem',
+    marginLeft: '8px',
+  };
+
   return (
     <div
       className="d-flex flex-column p-4 bg-dark"
@@ -26,7 +42,8 @@ function SavedSidebar({ setShowSavedItem }) {
           borderRadius: '10px',
         }}
       >
-        📒 Notes
+        📒 Notes 
+       <span style={badgeStyle}>{totalnotes}</span>
       </button>
 
        <button
@@ -40,7 +57,8 @@ function SavedSidebar({ setShowSavedItem }) {
           borderRadius: '10px',
         }}
       >
-        📒 Friends Notes
+        📒 Friends Notes 
+         <span style={badgeStyle}>{totalfriendsnotes}</span>
       </button>
 
       <button
@@ -54,7 +72,8 @@ function SavedSidebar({ setShowSavedItem }) {
           borderRadius: '10px',
         }}
       >
-        🔖 Bookmarks
+        🔖 Bookmarks 
+        <span style={badgeStyle}>{totalbookmark}</span>
       </button>
        
     </div>

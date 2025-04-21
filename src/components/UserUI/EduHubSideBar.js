@@ -1,6 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function EduHubSideBar({ setActiveTab }) {
+  const totalcontent = useSelector((state) => state.Study.eduhubcontent);
+  const totalsent = useSelector((state) => state.Study.eduhubsent);
+  const badgeStyle = {
+    backgroundColor: '#c19a6b',
+    color: '#4b4b4b',
+    fontWeight: 'bold',
+    borderRadius: '12px',
+    padding: '0.25em 0.6em',
+    fontSize: '0.8rem',
+    marginLeft: '8px',
+  };
   return (
     <div
       className="d-flex flex-column p-4 bg-dark"
@@ -22,7 +34,8 @@ function EduHubSideBar({ setActiveTab }) {
           borderRadius: "10px",
         }}
       >
-        📘 Content
+        📘 Content 
+        <span style={badgeStyle}>{totalcontent}</span>
       </button>
 
       <button
@@ -36,7 +49,8 @@ function EduHubSideBar({ setActiveTab }) {
           borderRadius: "10px",
         }}
       >
-        ✉️ Sent
+        ✉️ Sent 
+        <span style={badgeStyle}>{totalsent}</span>
       </button>
     </div>
   );

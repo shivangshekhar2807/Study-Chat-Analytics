@@ -45,7 +45,7 @@ function WriteEmail() {
     toEmailRef.current.value = '';
     subjectRef.current.value = '';
     contentRef.current.value = '';
-    alert("Email sent successfully!");
+    
   };
 
   return (

@@ -1,13 +1,15 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { StudyAction } from '../Store/StudySlice';
 
 function EduHubSent() {
   const email = useSelector((state) => state.Auth.email);
   const cleanedemail = email.replace(/[@.]/g, '_');
   const [userPosts, setUserPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchUserPosts();
@@ -35,6 +37,8 @@ function EduHubSent() {
 
       setUserPosts(posts.reverse());
       setIsLoading(false);
+      
+      dispatch(StudyAction.eduhubsenthandler({val: posts.length}))
     } catch (error) {
       alert(error.message);
       setIsLoading(false);
